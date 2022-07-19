@@ -1,12 +1,11 @@
-import { StyleSheet } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View } from 'react-native';
 import Header from './Header';
 import LoginPage from './login';
 import SignupPage from './signup';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { navigationRef } from './RootNavigation';
-import Dashboard from './dashboard';
-import Edit from './edit';
 
 
 const Stack = createStackNavigator();
@@ -17,13 +16,13 @@ export default function App() {
       ref={navigationRef}>
       <Stack.Navigator initialRouteName='LoginPage'>
 
-        {<Stack.Screen
+         {<Stack.Screen
           name="LoginPage"
           component={LoginPage}
           options={{
             header: () => <Header headerDisplay="Login" />
           }}
-        />}
+        />} 
 
         {<Stack.Screen
           name="SignupPage"
@@ -32,24 +31,7 @@ export default function App() {
             header: () => <Header headerDisplay="Signup" />
           }}
         />}
-
-         {<Stack.Screen
-          name="Dashboard"
-          component={Dashboard}
-          options={{
-            header: () => <Header headerDisplay="Dashboard" />
-          }}
-        />}
-
-        {<Stack.Screen
-          name="Edit"
-          component={Edit}
-          options={{
-            header: () => <Header headerDisplay="Edit" />
-          }}
-        />}
-
-      </Stack.Navigator>
+        </Stack.Navigator>
     </NavigationContainer>
   );
 }
@@ -61,5 +43,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-
 });
